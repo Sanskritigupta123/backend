@@ -1,7 +1,12 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const s = require('./config/serverConfig.js');
+const route = require('./routes/route.js');
+const {getData} = require('./controllers/control.js');
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+const app = express();
+
+app.use("/api/v1", route);
+
+app.listen(s.PORT, () => {
+    console.log(`Server is running on port ${s.PORT}`);
 });
